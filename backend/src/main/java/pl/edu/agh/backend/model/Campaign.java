@@ -34,7 +34,7 @@ public class Campaign {
 
     public Campaign(String name, String keywords, Integer bid, Integer fund, String status, String town, Integer radius) {
         this.name = name;
-            this.keywords = keywords;
+        this.keywords = keywords;
         this.bid = bid;
         this.fund = fund;
         this.status = status;
