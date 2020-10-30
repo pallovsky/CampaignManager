@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>11</java.version>
+        <start-class>pl.edu.agh.backend.BackendApplication</start-class>
     </properties>
 
     <dependencies>
