@@ -36,4 +36,8 @@ export class CampaignListComponent implements OnInit {
     this.router.navigate(['details', id]);
   }
 
+  updateCampaign(id: number){
+    this.router.navigate(['update', id]);
+  }
+
 }
