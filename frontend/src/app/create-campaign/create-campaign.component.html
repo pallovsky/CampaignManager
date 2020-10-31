@@ -10,10 +10,6 @@
       <label for="typeahead-basic">Keywords:</label>
       <input id="name" type="text" class="form-control" required [(ngModel)]="campaign.keywords" name="name" [ngbTypeahead]="search"/>
     </div>
-    <!-- <div class="form-group">
-      <label for="name">Keywords</label>
-      <input type="text" class="form-control" id="keywords" required [(ngModel)]="campaign.keywords" name="keywords">
-    </div> -->
 
     <div class="form-group">
       <label for="name">Bid</label>
@@ -26,9 +22,14 @@
     </div>
 
     <div class="form-group">
+      <label for="name">Status</label>
+      <br/>On:<input type="radio" value="ON" label="ON" class="form-control" id="status" required [(ngModel)]="campaign.status" name="status">Off:
+      <input type="radio" value="OFF" class="form-control" id="status" required [(ngModel)]="campaign.status" name="status">
+    </div>
+    <!-- <div class="form-group">
         <label for="name">Status</label>
         <input type="text" class="form-control" id="status" required [(ngModel)]="campaign.status" name="status">
-    </div>
+    </div> -->
 
     <div class="form-group">
         <label for="name">Town</label>
