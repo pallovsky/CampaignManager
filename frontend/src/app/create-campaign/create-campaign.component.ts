@@ -14,7 +14,7 @@ export class CreateCampaignComponent implements OnInit {
 
   constructor(private campaignService: CampaignService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   newCampaign(): void {
