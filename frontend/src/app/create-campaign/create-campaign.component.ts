@@ -7,7 +7,6 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { EmeraldService } from '../emerald.service';
-import { Emerald } from '../emerald';
 
 const keywords = ['keyword1', 'anotherone', 'next', 'campaign'];
 
@@ -29,7 +28,7 @@ export class CreateCampaignComponent implements OnInit {
               private emeraldService: EmeraldService) { }
 
   ngOnInit() {
-    this.funds = this.emeraldService.getFunds(); 
+    this.funds = this.campaignService.getFunds(); 
   }
 
   newCampaign(): void {

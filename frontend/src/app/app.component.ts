@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Emerald } from './emerald';
 import { EmeraldService } from './emerald.service';
 
@@ -10,7 +9,7 @@ import { EmeraldService } from './emerald.service';
 })
 export class AppComponent implements OnInit {
   title = 'Campaign Manager';
-  funds: Observable<Object> = this.emeraldService.getFunds();
+  funds: Emerald;
   i: number = 20000;
 
   constructor(private emeraldService: EmeraldService) { 
@@ -20,6 +19,10 @@ export class AppComponent implements OnInit {
   }
 
   reloadData(){
-    this.funds = this.emeraldService.getFunds();
+    this.emeraldService.getFunds().subscribe(
+      (emerald) => {
+        this.funds = emerald;
+      }
+    )
   }
 }

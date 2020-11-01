@@ -4,12 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.agh.backend.exception.ResourceNotFoundException;
-import pl.edu.agh.backend.model.Campaign;
 import pl.edu.agh.backend.model.Emerald;
-import pl.edu.agh.backend.model.Product;
 import pl.edu.agh.backend.repository.EmeraldRepository;
 
-import javax.validation.Valid;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController

@@ -30,4 +30,8 @@ export class CampaignService {
   getCampaignList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
+  getFunds(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/emerald/funds');
+  }
 }

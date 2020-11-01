@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Emerald } from './emerald';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class EmeraldService {
 
   constructor(private http: HttpClient) { }
 
-  getFunds(){
+  getFunds(): Observable<any>{
     return this.http.get(`${this.baseUrl}/${1}`);
   }
 
@@ -19,3 +20,5 @@ export class EmeraldService {
   }
   
 }
+
+
