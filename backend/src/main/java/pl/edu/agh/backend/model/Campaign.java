@@ -30,6 +30,10 @@ public class Campaign {
     @Column(name = "radius")
     private Integer radius;
 
+    @ManyToOne
+    @JoinColumn(name="product_id", nullable=false)
+    private Product product;
+
     public Campaign() {}
 
     public Campaign(String name, String keywords, Integer bid, Integer fund, String status, String town, Integer radius) {
@@ -40,6 +44,17 @@ public class Campaign {
         this.status = status;
         this.town = town;
         this.radius = radius;
+    }
+
+    public Campaign(String name, String keywords, Integer bid, Integer fund, String status, String town, Integer radius, Product product) {
+        this.name = name;
+        this.keywords = keywords;
+        this.bid = bid;
+        this.fund = fund;
+        this.status = status;
+        this.town = town;
+        this.radius = radius;
+        this.product = product;
     }
 
     public long getId() {
@@ -104,5 +119,13 @@ public class Campaign {
 
     public void setRadius(Integer radius) {
         this.radius = radius;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

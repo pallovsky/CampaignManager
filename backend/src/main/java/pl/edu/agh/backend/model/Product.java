@@ -2,6 +2,7 @@ package pl.edu.agh.backend.model;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -34,4 +35,5 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
+    
 }
