@@ -28,3 +28,13 @@ CREATE TABLE products (
  	  ('Product 1'),
  	  ('Product 2'),
  	  ('Product 3');
+
+DROP TABLE IF EXISTS emerald;
+
+CREATE TABLE emerald (
+ 	id INT AUTO_INCREMENT  PRIMARY KEY,
+ 	funds INT NOT NULL
+);
+
+INSERT  INTO emerald (funds) VALUES
+  (20000);
