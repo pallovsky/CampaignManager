@@ -15,3 +15,15 @@ DROP TABLE IF EXISTS campaigns;
  	  ('Campaign name 1','key 1', 20000, 10000, 'ON', 'Warsaw', 200),
  	  ('Campaign name 2','key 2', 30000, 8000, 'OFF', 'Warsaw', 150),
  	  ('Campaign name 3','key 3', 30000, 20000, 'ON', 'Cracow', 100);
+
+DROP TABLE IF EXISTS products;
+
+CREATE TABLE products (
+ 	id INT AUTO_INCREMENT  PRIMARY KEY,
+ 	name VARCHAR(250) NOT NULL
+);
+
+ 	INSERT INTO products (name) VALUES
+ 	  ('Product 1'),
+ 	  ('Product 2'),
+ 	  ('Product 3');

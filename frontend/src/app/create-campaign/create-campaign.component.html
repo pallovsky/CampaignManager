@@ -13,12 +13,12 @@
 
     <div class="form-group">
       <label for="name">Bid</label>
-      <input type="number" class="form-control" id="emailId" required [(ngModel)]="campaign.bid" name="bid">
+      <input type="number" min="0" class="form-control" id="emailId" required [(ngModel)]="campaign.bid" name="bid">
     </div>
 
     <div class="form-group">
         <label for="name">Fund</label>
-        <input type="number" class="form-control" id="fund" required [(ngModel)]="campaign.fund" name="fund">
+        <input type="number" min="0" class="form-control" id="fund" required [(ngModel)]="campaign.fund" name="fund">
     </div>
 
     <div class="form-group">
@@ -26,10 +26,6 @@
       <br/>On:<input type="radio" value="ON" label="ON" class="form-control" id="status" required [(ngModel)]="campaign.status" name="status">Off:
       <input type="radio" value="OFF" class="form-control" id="status" required [(ngModel)]="campaign.status" name="status">
     </div>
-    <!-- <div class="form-group">
-        <label for="name">Status</label>
-        <input type="text" class="form-control" id="status" required [(ngModel)]="campaign.status" name="status">
-    </div> -->
 
     <div class="form-group">
       <label for="singleSelect"> Town: </label><br>
@@ -41,14 +37,9 @@
     </select>
     </div>
 
-    <!-- <div class="form-group">
-        <label for="name">Town</label>
-        <input type="text" class="form-control" id="town" required [(ngModel)]="campaign.town" name="town">
-    </div> -->
-
     <div class="form-group">
         <label for="name">Radius</label>
-        <input type="number" class="form-control" id="radius" required [(ngModel)]="campaign.radius" name="radius">
+        <input type="number" min="0" class="form-control" id="radius" required [(ngModel)]="campaign.radius" name="radius">
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
