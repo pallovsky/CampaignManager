@@ -8,6 +8,7 @@
           <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Product</th>
             <th>Status</th>
             <th>Bid</th>
           </tr>
@@ -16,6 +17,7 @@
           <tr *ngFor="let campaign of campaigns | async">
             <td>{{campaign.id}}</td>
             <td>{{campaign.name}}</td>
+            <td>{{campaign.product.name}}</td>
             <td>{{campaign.status}}</td>
             <td>{{campaign.bid}}</td>
             <td><button (click)="deleteCampaign(campaign.id)" class="btn btn-danger">Delete</button>

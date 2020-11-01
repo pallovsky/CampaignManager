@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Campaign } from '../campaign';
 import { CampaignService } from '../campaign.service';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import { ProductService } from '../product.service';
+import { Product } from '../product';
 
 const keywords = ['keyword1', 'anotherone', 'next', 'campaign'];
 
@@ -14,9 +16,12 @@ const keywords = ['keyword1', 'anotherone', 'next', 'campaign'];
 })
 export class CreateCampaignComponent implements OnInit {
   campaign: Campaign = new Campaign();
+  product: Product = new Product();
+  id: number;
   submitted = false;
 
-  constructor(private campaignService: CampaignService, private router: Router) { }
+  constructor(private campaignService: CampaignService, 
+              private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,14 +31,18 @@ export class CreateCampaignComponent implements OnInit {
     this.campaign = new Campaign();
   }
 
-  save(){
-    this.campaignService
-    .createCampaign(this.campaign).subscribe(data => {
-      console.log(data)
-      this.campaign = new Campaign();
-      this.gotoList();
-    }, 
-    error => console.log(error));
+  save() {
+    this.productService.getProduct(this.id).subscribe(
+      (product) => {
+        this.campaign.product = product;
+        this.campaignService.createCampaign(this.campaign).subscribe(
+          data => {
+            this.gotoList();
+          },
+          error => console.log(error)
+        )
+      }
+    )
   }
 
   onSubmit() {

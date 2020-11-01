@@ -1,3 +1,5 @@
+import { Product } from './product';
+
 export class Campaign {
     id: number;
     name: string;
@@ -6,5 +8,6 @@ export class Campaign {
     fund: number;
     status: string;
     town: string;
-    radius: number 
+    radius: number; 
+    product: Product;
 }
