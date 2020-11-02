@@ -49,7 +49,11 @@ export class CreateCampaignComponent implements OnInit {
         this.campaign.product = product;
         this.campaignService.createCampaign(this.campaign).subscribe(
           data => {
-            this.gotoList();
+            this.emeraldService.changeFunds(1, new Emerald(1, this.funds-this.campaign.bid))
+              .subscribe(data => {
+                console.log(data);
+                this.gotoList();
+            }, error => console.log(error));
           },
           error => console.log(error)
         )
