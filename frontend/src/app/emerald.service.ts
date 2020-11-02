@@ -11,12 +11,12 @@ export class EmeraldService {
 
   constructor(private http: HttpClient) { }
 
-  getFunds(): Observable<any>{
-    return this.http.get(`${this.baseUrl}/${1}`);
+  getFunds(): Promise<any>{
+    return this.http.get(`${this.baseUrl}`).toPromise();
   }
 
-  changeFunds(fund: number): Observable<Object>{
-    return this.http.put(`${this.baseUrl}`, fund);
+  changeFunds(id: number, value: any): Observable<Object>{
+    return this.http.put('http://localhost:8080/api/emerald/1', value);
   }
   
 }

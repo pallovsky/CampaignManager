@@ -9,19 +9,18 @@ import { EmeraldService } from './emerald.service';
 })
 export class AppComponent implements OnInit {
   title = 'Campaign Manager';
-  funds: Emerald;
-  i: number = 20000;
-
+  funds: number;
+  
   constructor(private emeraldService: EmeraldService) { 
   }
   ngOnInit(): void {
-    this.reloadData;
+    this.reloadData();
   }
 
   reloadData(){
-    this.emeraldService.getFunds().subscribe(
+    this.emeraldService.getFunds().then(
       (emerald) => {
-        this.funds = emerald;
+        this.funds = emerald.funds;
       }
     )
   }

@@ -7,6 +7,7 @@ import pl.edu.agh.backend.exception.ResourceNotFoundException;
 import pl.edu.agh.backend.model.Emerald;
 import pl.edu.agh.backend.repository.EmeraldRepository;
 
+import javax.validation.Valid;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -24,14 +25,13 @@ public class EmeraldController {
             return ResponseEntity.ok().body(emerald);
     }
 
-    @PutMapping("/emerald/fund")
-    public ResponseEntity<Emerald> updateEmerald(Long bill) throws ResourceNotFoundException
-    {
-        Emerald emerald = emeraldRepository.findById(1L)
-                .orElseThrow(() -> new ResourceNotFoundException("Emerald not found for this id :: " + 1L));
+    @PutMapping("/emerald/{id}")
+    public ResponseEntity<Emerald> updateCampaign(@PathVariable(value = "id") Long emeraldId,
+                                                   @Valid @RequestBody Emerald emeraldDetails) throws ResourceNotFoundException {
+        Emerald emerald = emeraldRepository.findById(emeraldId)
+                .orElseThrow(() -> new ResourceNotFoundException("Emerald not found for this id :: " + emeraldId));
 
-        Long oldFunds = emerald.getFunds();
-        emerald.setFunds(oldFunds - bill);
+        emerald.setFunds(emeraldDetails.getFunds());
 
         final Emerald updatedEmerald = emeraldRepository.save(emerald);
         return ResponseEntity.ok(updatedEmerald);

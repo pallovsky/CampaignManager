@@ -7,6 +7,7 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { EmeraldService } from '../emerald.service';
+import { Emerald } from '../emerald';
 
 const keywords = ['keyword1', 'anotherone', 'next', 'campaign'];
 
@@ -15,12 +16,13 @@ const keywords = ['keyword1', 'anotherone', 'next', 'campaign'];
   templateUrl: './create-campaign.component.html',
   styleUrls: ['./create-campaign.component.css']
 })
+
 export class CreateCampaignComponent implements OnInit {
   campaign: Campaign = new Campaign();
   product: Product = new Product();
   id: number;
   submitted = false;
-  funds: Observable<Object>;
+  funds: number;
 
   constructor(private campaignService: CampaignService, 
               private productService: ProductService, 
@@ -28,7 +30,11 @@ export class CreateCampaignComponent implements OnInit {
               private emeraldService: EmeraldService) { }
 
   ngOnInit() {
-    this.funds = this.campaignService.getFunds(); 
+    this.emeraldService.getFunds().then(
+      (emerald) => {
+        this.funds = emerald.funds;
+      }
+    )
   }
 
   newCampaign(): void {
@@ -37,6 +43,7 @@ export class CreateCampaignComponent implements OnInit {
   }
 
   save() {
+    
     this.productService.getProduct(this.id).subscribe(
       (product) => {
         this.campaign.product = product;
@@ -52,7 +59,9 @@ export class CreateCampaignComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.emeraldService.changeFunds(this.campaign.fund);
+    
+    let emerald = new Emerald(1, this.funds-this.campaign.bid);
+    this.emeraldService.changeFunds(1, emerald);
     this.save();    
   }
 
